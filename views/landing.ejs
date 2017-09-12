@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>YelpCamp</title>
+        <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Monoton" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheets/landing.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript" async></script>
+        
+    </head>
+    <body>
+    
+    <nav class="navbar navbar-default navbar-fixed-top" style="opacity:0.5">
+            <div class="container-fluid">
+                <div class="container">
+                    <div class="navbar-header">
+                    <a class="navbar-brand" style="font-family: 'Berkshire Swash', cursive;" href="/">YelpClone <span><i class="fa fa-yelp" aria-hidden="true"></i></span></a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <% if(!currentUser){ %>
+                            <li><a href="/login">Login</a></li>
+                            <li><a href="/register">Sign Up</a></li>
+                        <% }else { %>
+                            <li><a href="#">Signed In As <%= currentUser.username %></a> </li>
+                            <li><a href="/logout">Logout</a></li>
+                        <% } %>
+                        
+                    </ul>
+                </div>
+                </div>
+                
+            </div>
+        </nav>
+    
+    <div id="landing-header">
+ 		<h1 style="font-family: 'Berkshire Swash', cursive;">Welcome to YelpClone</h1>
+ 		<hr></hr>
+		<a style="opacity:0.8;font-family: 'Berkshire Swash', cursive;" href="/restaurants" class="btn btn-lg btn-default">View All Restaurants</a>
+		
+    </div>
+  
+    
+    
+    <ul class="slideshow">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    
+    <footer id="footer" class="footer navbar navbar-default navbar-fixed-bottom " style="opacity:0.5">
+          <div class="container" style="padding-top: 1%">
+            <p class="text-muted">&copy; YelpCamp 2017 made by Yiming Nick | <span>
+               <a href="https://www.facebook.com/nickzym"><i class="fa fa-facebook" aria-hidden="true "></i>&nbsp</a>
+               <a href="https://www.instagram.com/nnnickzym"><i class="fa fa-instagram" aria-hidden="true"></i>&nbsp</a>
+               <a href="https://www.linkedin.com/in/yimingzh/"><i class="fa fa-linkedin" aria-hidden="true"></i>&nbsp</a>
+               <a href="https://github.com/nickzym"><i class="fa fa-github" aria-hidden="true"></i></a></span></p>
+          </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<% include ../partials/header %>
+ <div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">YelpCamp</p>
+            <div class="list-group">
+                <li class="list-group-item active">Info1</li>
+                <li class="list-group-item">Info2</li>
+                <li class="list-group-item">Info3</li>
+            </div>
+            <div id="map"></div>
+        </div>
+        <div class="col-md-9">
+            <div class="thumbnail">
+                <img class="image-responsive" src="<%= restaurant.image %>">
+                <div class="caption-full">
+                    <h4 class="pull-right">$<%=restaurant.price %> / person</h4>
+                    <h4><a><%= restaurant.name %></a></h4>
+                    <p><%= restaurant.description %></p>
+                    <p><em>Submitted By <a href="/users/<%= restaurant.author.id %>"><%= restaurant.author.username %></a>, <%= moment(restaurant.createdAt).fromNow() %></em></p>
+                    
+                    <% if((currentUser && restaurant.author.id.equals(currentUser._id)) || (currentUser && currentUser.isAdmin)){ %>
+                        <a class="btn btn-warning" href="/restaurants/<%= restaurant._id %>/edit">Edit</a>
+                        <form class="delete-form" action="/restaurants/<%= restaurant._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                    <% } %>
+                </div>
+            </div>
+            <div class="well">
+                <div class="text-right">
+                    <a class="btn btn-success" href="/restaurants/<%= restaurant._id %>/comments/new">Add New Comment</a>
+                </div>
+                <hr></hr>
+                <% restaurant.comments.forEach(function(comment){ %>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p><strong><%= comment.author.username %></strong>
+                            <span class="pull-right"><%= moment(comment.createdAt).fromNow() %></span></p>
+                            <p><%= comment.text %></p>
+                            <% if((currentUser && comment.author.id.equals(currentUser._id)) || (currentUser && currentUser.isAdmin)){ %>
+                                <div class="pull-right">
+                                    <a class="btn btn-xs btn-warning" href="/restaurants/<%=restaurant._id %>/comments/<%=comment._id%>/edit">Edit</a>
+                                    <form class="delete-form" action="/restaurants/<%=restaurant._id %>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                                        <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                                    </form>
+                                </div>
+                                
+                            <% } %>
+                        </div>
+                    </div>
+                    <hr></hr>
+                <% }) %>
+            </div>
+            
+        </div>
+    </div>
+ </div>
+<script>
+  function initMap() {
+    var lat = <%= restaurant.lat %>;
+    var lng = <%= restaurant.lng %>;
+    var center = {lat: lat, lng: lng };
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: center,
+        scrollwheel: false
+    });
+    var contentString = `
+      <strong><%= restaurant.name %><br />
+      <%= restaurant.location %></strong>
+      <p><%= restaurant.description %></p>
+    `
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+    var marker = new google.maps.Marker({
+        position: center,
+        map: map
+    });
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
+  }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoLWB9IoXTXKUECt1GZwR_gARM_MFEdkk&callback=initMap"></script>
+<% include ../partials/footer %>

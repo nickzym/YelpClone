@@ -1,0 +1,42 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <h2 style="text-align:center">Edit <%= restaurant.name %></h1>
+        <div style="width:35%; margin:25px auto;">
+            
+            <form action="/restaurants/<%= restaurant._id %>?_method=PUT" method="POST">
+                <div class="form-group">
+                    <label for="restaurant[name]">Name</label>
+                    <input class="form-control" type="text" name = "restaurant[name]" value="<%= restaurant.name %>"></input>
+                </div>
+                <div class="form-group">
+                    <label for="restaurant[price]">Price</label>
+                    <input class="form-control" type="number" name = "restaurant[price]" value="<%= restaurant.price %>" min="0.01" step="0.01"></input>
+                </div>
+                <div class="form-group">
+                    <label for="restaurant[location]">Location</label>
+                    <input class="form-control" type="text" name="restaurant[location]" id="location" value="<%= restaurant.location %>">
+                </div>
+                <div class="form-group">
+                    <label for="restaurant[image]">Image Url</label>
+                    <input class="form-control" type="text" name = "restaurant[image]" value="<%= restaurant.image %>"></input>
+                </div>
+                <div class="form-group">
+                    <label for="restaurant[description]">Description</label>
+                    <input class="form-control" type="text" name = "restaurant[description]" value="<%= restaurant.description %>"></input>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                </div>
+                
+            </form>
+            <a href="/restaurants">Go Back</a>
+        </div>
+        
+        
+    </div>
+    
+</div>
+
+<% include ../partials/footer%>

@@ -1,0 +1,33 @@
+<% include ../partials/header %>
+    <header class="jumbotron">
+        <div class="container" id="content">
+            <h1 style="font-family: 'Berkshire Swash', cursive;">Welcom to YelpClone</h1>
+            <p style="font-family: 'Encode Sans Condensed', sans-serif;">View our hand-picked restaurants from all over the world</p>
+            <p><a class="btn btn-default btn-lg" style="opacity=0.8" href="/restaurants/new">Add New Restaurant</a></p>
+        </div>
+        
+    </header>
+    
+    <div class="container" style="padding-top:2%">
+        <div class="row text-center" sytle="display:flex; flex-warp:wrap;">
+            <% restaurants.forEach(function(restaurant){ %>
+                <div class="col-md-3 col-sm-6">
+                    <div class="thumbnail">
+                        <img src="<%= restaurant.image %>">
+                        <div class="caption">
+                            <h4><%= restaurant["name"] %></h4>
+                        </div>
+                        <p>
+                            <a href="/restaurants/<%= restaurant._id %>" class="btn btn-primary">More Information</a>
+                        </p>
+                    </div>
+                    
+                </div>
+                    
+            <% }); %>
+        </div>
+    </div>
+<% include ../partials/footer %>
+
+
+

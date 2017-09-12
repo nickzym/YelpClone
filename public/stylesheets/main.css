@@ -1,0 +1,52 @@
+
+.thumbnail img {
+    width: 100%;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+}
+
+.delete-form {
+    display: inline;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+}
+
+
+
+.navbar {
+    -webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 6px 6px -6px #999;
+    margin-bottom: 2px;
+
+    /* the rest of your styling */
+}
+
+#footer{
+    -webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 -6px 6px -6px #999;
+    /* the rest of your styling */
+}
+
+.jumbotron {
+    margin:0 auto;
+    background-image: url("https://source.unsplash.com/jpkfc5_d-DI");
+    background-size: cover
+}
+
+#content {
+    color:white;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.2), 
+                 0px 8px 13px rgba(0,0,0,0.1),
+                 0px 18px 23px rgba(0,0,0,0.1)
+}

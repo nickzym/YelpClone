@@ -6,7 +6,7 @@ Based on The Web Developer Bootcamp of Udemy course taught by Colt Steele
 
 Technology Stack: Express, MongoDB, and Bootstrap
 
-Create complex HTML forms with validations
+Create complex HTML forms with validations\n
 Write web apps with full authentication
 Use Bootstrap to create good-looking responsive layouts
 RESTful routes implement by Express
